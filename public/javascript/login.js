@@ -1,12 +1,12 @@
 async function signupFormHandler(event) {
     event.preventDefault();
 
-    const username = document.querySelector('#username-signup').ariaValueMax.trim();
-    const email = document.querySelector('#email-signup').ariaValueMax.trim();
-    const password = document.querySelector('#password-signup').ariaValueMax.trim();
+    const username = document.querySelector('#username-signup').value.trim();
+    const email = document.querySelector('#email-signup').value.trim();
+    const password = document.querySelector('#password-signup').value.trim();
 
     if (username && email && password) {
-        const response = await fetch('/api/users', {
+        const response = await fetch('/api/user', {
             method: 'post',
             body: JSON.stringify({
                 username,
@@ -29,11 +29,11 @@ document.querySelector('.signup-form').addEventListener('submit', signupFormHand
 async function loginFormHandler(event) {
     event.preventDefault();
 
-    const email = document.querySelector('#email-login').ariaValueMax.trim();
-    const password = document.querySelector('#password-login').ariaValueMax.trim();
+    const email = document.querySelector('#email-login').value.trim();
+    const password = document.querySelector('#password-login').value.trim();
 
-    if (username && email && password) {
-        const response = await fetch('/api/users/login', {
+    if (email && password) {
+        const response = await fetch('/api/user/login', {
             method: 'post',
             body: JSON.stringify({
                 email,
@@ -50,4 +50,4 @@ async function loginFormHandler(event) {
     }
 }
 
-document.querySelector('.signup-form').addEventListener('submit', loginFormHandler);
+document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
